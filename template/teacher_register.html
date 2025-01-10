@@ -1,0 +1,42 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Teacher Registration</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+ <div class="container text-center" style="width: 300px; height: auto;">
+    <h2>Teacher Registration</h2>
+    <form method="post">
+        {% csrf_token %}
+        <div>
+            <label for="username" class="form-label">Username</label>
+            <input type="text" name="username" class="form-control" id="username" placeholder="Username" required>
+        </div>
+        <div>
+            <label for="password" class="form-label">Password</label>
+            <input type="password" name="password" class="form-control" id="password" placeholder="Password" required>
+        </div>
+        <div>
+            <label for="full_name" class="form-label">Full Name</label>
+            <input type="text" name="full_name" class="form-control" placeholder="Full Name" id="full_name" required>
+        </div>
+        <div>
+            <label for="subject" class="form-label">Subject</label>
+            <input type="text" name="subject" class="form-control" placeholder="Subject" id="subject" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Register</button>
+    </form>
+    <p>Already registered? <a href="{% url 'teacher_login' %}">Login here</a></p>
+ </div>
+</body>
+{% endblock %}
+</html>
+
+

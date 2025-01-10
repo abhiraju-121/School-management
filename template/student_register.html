@@ -1,0 +1,44 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Registration</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body><br>
+    <div class="container text-center" style="width: 300px; height:auto;">
+        <h2>Student Registration</h2><hr>
+        <form method="post">
+            {% csrf_token %}
+            <div>
+                <label for="username" class="form-label">Username</label>
+                <input type="text" class="form-control" name="username"  id="username" placeholder="Username" required>
+            </div>
+            <div>
+                <label for="password" class="form-label">Password</label>
+                <input type="password"class="form-control" name="password" placeholder="Password"id="password" required>
+            </div>
+            <div >
+                <label for="full_name" class="from-label">Full name</label>
+                <input type="text" class="form-control" name="full_name" placeholder="Full Name"  id="full_name" required>
+            </div>
+            <div >
+                <label for="roll_number" class="form-label">Roll number</label>
+                <input type="text" class="form-control" name="roll_number" placeholder="Roll Number" id="full_name" required>
+            </div>
+            <div>
+                <label for="date_of_birth" class="from-label">DOB</label><br>
+                <input type="date" class="form-control" name="date_of_birth" id="date_of_birth" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Register</button>
+        </form>
+        <p>Already registered? <a href="{% url 'login' %}">Login here</a></p>
+    </div>
+</body>
+{% endblock %}
+</html>

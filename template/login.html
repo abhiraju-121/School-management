@@ -1,0 +1,39 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container text-center" style="width: 300px; height: auto;" >
+    <h3> Student Login</h3><hr>
+    <form method="post">
+        {% csrf_token %}
+        <div>
+            <label class="form-label" for="username">Username</label>
+            <input type="text"class="form-control" name="username" placeholder="Username" id="username"required>
+        </div>
+        <div>
+            <label class="form-label" for="password">Password</label>
+            <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Login</button>
+    </form>
+    <p>New here? <a href="{% url 'register' %}">Register as Student</a><br> or <br> <a href="{% url 'teacher_login' %}">Login as Teacher</a></p>
+</div>
+{% if messages %}
+    {% for message in messages %}
+        <p class="error">{{ message }}</p>
+    {% endfor %}
+{% endif %}
+
+</body>
+{% endblock %}
+</html>

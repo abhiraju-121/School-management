@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Cart</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container text-center">
+        <h1>Your Cart</h1>
+        <hr>
+        {% if cart %}
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <!-- <th>Image</th> -->
+                    <th>Book Name</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Subtotal</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in cart.values %}
+                <tr>
+                    <!-- <td><img src="{{ item.image }}" alt="{{ item.name }}" style="width: 80px; height: 100px;"></td> -->
+                    <td>{{ item.name }}</td>
+                    <td>Rs. {{ item.price }}</td>
+                    <td>{{ item.quantity }}</td>
+                    <td>Rs. {{ item.subtotal }}</td>
+                </tr>
+                {% endfor %}
+                <tr>
+                    <td rowspan="2" class="text-right"><strong>Total:</strong></td>
+                    <td><strong>Rs. {{ total_price }}</strong></td>
+                </tr>
+            </tbody>
+        </table>
+        <a href="{% url 'view_cart' %}" class="btn btn-primary">Refresh Cart</a>
+        <a href="/" class="btn btn-primary">Continue Shopping</a>
+        <!-- <a href="#" class="btn btn-success">Checkout</a> -->
+        {% else %}
+        <p>Your cart is empty!</p>
+        <a href="{% url 'index' %}" class="btn btn-primary">Continue Shopping</a>
+        
+        {% endif %}
+    </div>
+</body>
+</html>

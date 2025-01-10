@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Books</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+        body {
+            background-color: #f9f9f9;
+            font-family: 'Arial', sans-serif;
+        }
+        .container {
+            margin-top: 30px;
+        }
+        h2 {
+            font-weight: bold;
+            color: #333;
+        }
+        .card {
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+            margin: 15px;
+            transition: transform 0.2s ease-in-out;
+        }
+        .card:hover {
+            transform: scale(1.05);
+        }
+        .card img {
+            border-bottom: 1px solid #ddd;
+            height: 250px;
+            object-fit: cover;
+        }
+        .card-body {
+            padding: 15px;
+            background-color: #fff;
+        }
+        .card-title {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #555;
+        }
+        .card-text {
+            font-size: 0.9em;
+            color: #777;
+        }
+        .card-footer {
+            font-size: 1em;
+            font-weight: bold;
+            color: #000;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container text-center">
+        <h2>Our Books</h2>
+        <hr>
+        <div class="row">
+            {% for book in books %}
+            <div class="col-md-3">
+                <div class="card">
+                    <img src="{{ book.image.url }}" class="card-img-top" alt="{{ book.name }}">
+                    <div class="card-body">
+                        <h3 class="card-title">{{ book.name }}</h3>
+                        <p class="card-text">{{ book.desc|truncatechars:100 }}</p>
+                        <h4 class="card-footer">Rs. {{ book.price }}</h4>
+                        <a href="{% url 'b_details' book.id %}" class="btn btn-primary">View</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
